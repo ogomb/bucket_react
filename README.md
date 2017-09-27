@@ -2,7 +2,7 @@
 
 ### Getting Started
 
-There are two methods for getting started with this repo.
+To get started with this repo do the following.
 
 #### Familiar with Git?
 clone this repo, install dependencies, then start the app process with the following:
