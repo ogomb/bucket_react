@@ -4,7 +4,6 @@ import Home from "./containers/home";
 import NotFound from "./containers/notfound";
 import Login from "./containers/login";
 import Signup from "./containers/signup";
-import Logout from "./containers/logout";
 import AllBuckets from "./containers/allbuckets";
 
 export default () =>
