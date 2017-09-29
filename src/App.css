@@ -1,7 +1,16 @@
-.App {
+.App{
   margin-top: 15px;
+  width:95%;
 }
+
+.App .navbar-default {
+  background-color:#50a78c;
+ }
 
 .App .navbar-brand {
   font-weight: bold;
+}
+.App .navbar-collapse {
+  font-weight: bold;
+  margin-top: 15px;
 }
