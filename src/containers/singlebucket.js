@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./singlebucket.css";
 
 class SingleBucket extends Component {
 
