@@ -127,7 +127,7 @@ componentWillReceiveProps(nextProps){
           })
   }
   onshowEdit(id, name){
-    const editAlert = () => (
+    const editAlert = (id, name) => (
       <SweetAlert
           input
           showCancel
@@ -140,7 +140,7 @@ componentWillReceiveProps(nextProps){
       </SweetAlert>
     );
 
-    this.setState({alert : editAlert() });
+    this.setState({alert : editAlert(id, name) });
   }
 
   handleSubmit(value, id){
@@ -188,11 +188,14 @@ componentWillReceiveProps(nextProps){
             'content_type':"application/json"
         }
     })
-    .then(response => { this.setState({
-                searchedList: response.data.result
-        });
+    .then(response => {
+      if(response.data.message){
+        toast.error(response.data.message);
       }
-    )
+      else {
+        this.setState({ searchedList: response.data.result});
+      }
+    })
     .catch((error)=>{
       if (error.response) {
         console.log(error);
@@ -212,7 +215,7 @@ componentWillReceiveProps(nextProps){
             <h3 className="panel-title pull-left"> {name}</h3>
             <div className="btn-group pull-right">
               <a  className="btn btn-default btn-sm" onClick={() => this.onshowEdit(id,name)}>Edit</a>{this.state.alert}
-              <a  className="btn btn-default btn-sm" onClick= {() => this.handleDelete(id, name)}>Delete</a>
+              <a  className="btn btn-default btn-sm" onClick= {() => this.handleDelete(id, name)}>Delete</a>{this.state.alert}
             </div>
           </div>
             <div className="panel-body">
