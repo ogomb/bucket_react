@@ -65,7 +65,7 @@ export default class Login extends Component {
             <FormControl
               autoFocus
               type="text"
-              value={this.state.text}
+              value={this.state.username}
               onChange={this.handleChange}
             />
           </FormGroup>
