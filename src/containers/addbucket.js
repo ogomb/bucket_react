@@ -64,9 +64,7 @@ onInputChange(term){
             //alert(error)
             toast.error(error.response.data.message);
             this.setState({isLoading : false});
-
           })
-
   }
 
   render (){
@@ -95,10 +93,12 @@ onInputChange(term){
                   text="Add Bucket"
                   loadingText="Adding…"
                 />
-              </td>
-              </form>
+
+                </td>
+                </form>
               <td style={{ "padding-bottom":'15px'}}>
               <input className="form-control input-lg"
+                id="search_field"
                 type="text"
                 placeholder="Search ..."
                 onChange = {event => this.onInputChange(event.target.value)}
