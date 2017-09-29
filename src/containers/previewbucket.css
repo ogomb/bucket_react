@@ -2,3 +2,7 @@ table {
   border-spacing:3px;
   border-collapse: separate;
 }
+
+.panel-default > .panel-heading-custom {
+    background-color:#50a78c;
+}
