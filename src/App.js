@@ -4,6 +4,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import './App.css';
 import Routes from "./routes";
 import RouteNavItem from "./components/routenavitem";
+import ChangePassword from "./containers/changepassword";
 
 
 class App extends Component {
@@ -12,14 +13,17 @@ class App extends Component {
     if(window.localStorage.getItem("token")){
       return (
         <Nav pullRight>
-          <Link to="/" onClick={()=> window.localStorage.removeItem("token")}>Logout</Link>
-        </Nav>)
+          <Link to="/" onClick={()=> window.localStorage.removeItem("token")}>Logout</Link> &nbsp; &nbsp;
+          <Link to="/changepassword">Change Password</Link>
+        </Nav>
+      )
     } else {
       return (
         <Nav pullRight>
-          <Link to="/signup">Sign up</Link>
+          <Link to="/signup">Sign up</Link> &nbsp; &nbsp;
           <Link to="/login">Login</Link>
-        </Nav>)
+        </Nav>
+      )
     }}
   render() {
     return (
