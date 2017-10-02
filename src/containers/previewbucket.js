@@ -16,7 +16,9 @@ class PreviewBucket extends Component {
       isLoading: false,
       itemname: "",
       myitems:[],
-      searchedList : null
+      searchedList : null,
+      nameofBucket : "",
+      idofbucket :""
 
     };
     this.getmyitems = this.getmyitems.bind(this);
@@ -24,6 +26,8 @@ class PreviewBucket extends Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
+    this.handleItemSubmit = this.handleItemSubmit.bind(this);
+    this.handleItemdeleteSubmit = this.handleItemdeleteSubmit.bind(this);
   }
 
   handleChange = event => {
@@ -72,25 +76,7 @@ componentWillReceiveProps(nextProps){
           });
       }
   handleDelete(id, name){
-    axios({
-          url:  `http://127.0.0.1:5000/bucketlists/${id}`,
-          method: "DELETE",
-          headers : {
-                    'Authorization' :'Bearer '+window.localStorage.getItem("token"),
-                    'content_type':"application/json"
-          }
-
-          })
-          .then((response) => {
-                    toast.success("Deleted " + name);
-
-          }
-          )
-          .catch(error => {
-                      //alert(error)
-                console.log(error.response);
-          });
-
+    this.props.deleteBucket(id, name);
   }
 
   addItem = event =>{
@@ -147,7 +133,6 @@ componentWillReceiveProps(nextProps){
     const load = {
       'name' : value
     };
-
     axios({
               url:  `http://127.0.0.1:5000/bucketlists/${id}`,
               method: "PUT",
@@ -160,6 +145,10 @@ componentWillReceiveProps(nextProps){
             })
           .then((response) => {
                 this.getmyitems(id);
+                this.props.bucket.name = value;
+                this.setState({nameofBucket: value});
+                this.props.editBucket(id, value);
+
 
             }
           )
@@ -167,7 +156,6 @@ componentWillReceiveProps(nextProps){
             //alert(error)
             console.log(error.response);
           });
-
 
     this.hideAlert();
 
@@ -191,6 +179,7 @@ componentWillReceiveProps(nextProps){
     .then(response => {
       if(response.data.message){
         toast.error(response.data.message);
+        //this.setState({ searchedList: []});
       }
       else {
         this.setState({ searchedList: response.data.result});
@@ -204,15 +193,67 @@ componentWillReceiveProps(nextProps){
 
   }
 
+  handleItemSubmit(value, id, bucketid){
+    const load = {
+      'itemname' : value,
+      'done': 'True'
+    };
+    axios({
+              url:  `http://127.0.0.1:5000/bucketlists/${bucketid}/item/${id}`,
+              method: "PUT",
+              data: load,
+              headers : {
+                'Authorization' :'Bearer '+window.localStorage.getItem("token"),
+                'content_type':"application/json"
+              }
+
+            })
+          .then((response) => {
+                console.log("Created  "+ response.data.name);
+                this.getmyitems(bucketid);
+
+            }
+          )
+          .catch(error => {
+            //alert(error)
+            console.log(error.response);
+          });
+  }
+
+  handleItemdeleteSubmit(id, name, bucketid){
+    axios({
+              url:  `http://127.0.0.1:5000/bucketlists/${bucketid}/item/${id}`,
+              method: "DELETE",
+              headers : {
+                'Authorization' :'Bearer '+window.localStorage.getItem("token"),
+                'content_type':"application/json"
+              }
+
+            })
+          .then((response) => {
+                console.log("deleted  "+ response.data.name);
+                this.getmyitems(bucketid);
+
+            }
+          )
+          .catch(error => {
+            //alert(error)
+            console.log(error.response);
+          });
+
+  }
+
   render(){
     const {myitems: allitems, searchedList } = this.state;
     const {name, id } = this.props.bucket;
     return (
+
       <div className="col-md-6">
+
         <CustomToast/>
         <div className="panel panel-default">
           <div className="panel-heading clearfix" >
-            <h3 className="panel-title pull-left"> {name}</h3>
+            <h3 className="panel-title pull-left"> {this.props.bucket.name}</h3>
             <div className="btn-group pull-right">
               <a  className="btn btn-default btn-sm" onClick={() => this.onshowEdit(id,name)}>Edit</a>{this.state.alert}
               <a  className="btn btn-default btn-sm" onClick= {() => this.handleDelete(id, name)}>Delete</a>{this.state.alert}
@@ -226,6 +267,7 @@ componentWillReceiveProps(nextProps){
                     <FormGroup controlId="itemname" bsSize="large">
                         <FormControl
                           type="text"
+                          placeholder="Item Description"
                           value={this.state.itemname}
                           onChange={this.handleChange}
                         />
@@ -258,14 +300,18 @@ componentWillReceiveProps(nextProps){
                 <div className="list-group">
                 {searchedList.map(function(item, index) {
                   return (
-                    <SingleItem key={index} id={index} item = {item} bucketid ={id}onSelectItem= {this.onSelectItem}/>
+                    <SingleItem key={index} id={index} item = {item} bucketid ={id}onSelectItem= {this.onSelectItem}
+                            editItem ={(value, id, bucketid) => this.handleItemSubmit(value, id, bucketid)}
+                            deleteItem={(id, name, bucketid) => this.handleItemdeleteSubmit(id, name, bucketid)} />
                   )
                 },this)}
               </div> :
                 <div className="list-group">
                 {allitems.map(function(item, index) {
                   return (
-                    <SingleItem key={index} id={index} item = {item} bucketid ={id}onSelectItem= {this.onSelectItem}/>
+                    <SingleItem key={index} id={index} item = {item} bucketid ={id}onSelectItem= {this.onSelectItem}
+                              editItem ={(value, id, bucketid) => this.handleItemSubmit(value, id, bucketid)}
+                              deleteItem={(id, name, bucketid) => this.handleItemdeleteSubmit(id, name, bucketid)}/>
                   )
                 },this)}
               </div>}
