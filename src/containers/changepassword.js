@@ -51,11 +51,11 @@ export default class ChangePassword extends Component {
             })
             .then((response) => {
                   this.props.history.push("/login");
-                  console.log(response.data);
+                  
               }
             )
           .catch(error => {
-            console.log(error.data);
+            
             this.setState({isLoading : false});
           })
   }
