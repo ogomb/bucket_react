@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 import './App.css';
 import Routes from "./routes";
-import RouteNavItem from "./components/routenavitem";
-import ChangePassword from "./containers/changepassword";
+
 
 
 class App extends Component {
