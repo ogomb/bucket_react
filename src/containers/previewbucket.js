@@ -154,7 +154,7 @@ componentWillReceiveProps(nextProps){
           )
           .catch(error => {
             //alert(error)
-            console.log(error.response);
+            
           });
 
     this.hideAlert();
@@ -187,7 +187,7 @@ componentWillReceiveProps(nextProps){
     })
     .catch((error)=>{
       if (error.response) {
-        console.log(error);
+       
       }
     });
 
@@ -209,14 +209,14 @@ componentWillReceiveProps(nextProps){
 
             })
           .then((response) => {
-                console.log("Created  "+ response.data.name);
+               
                 this.getmyitems(bucketid);
 
             }
           )
           .catch(error => {
             //alert(error)
-            console.log(error.response);
+           
           });
   }
 
@@ -231,14 +231,14 @@ componentWillReceiveProps(nextProps){
 
             })
           .then((response) => {
-                console.log("deleted  "+ response.data.name);
+               
                 this.getmyitems(bucketid);
 
             }
           )
           .catch(error => {
             //alert(error)
-            console.log(error.response);
+           
           });
 
   }
