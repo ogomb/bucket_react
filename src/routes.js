@@ -10,10 +10,10 @@ import AllBuckets from "./containers/allbuckets";
 
 export default () =>
   <Switch>
-    <Route path="/" component={Home} />
-    <Route path="/login"  component={Login} />
-    <Route path="/signup" component={Signup} />
-    <Route path="/changepassword" component={ChangePassword} />
-    <Route path="/bucket" component={AllBuckets} />
+    <Route path="/" exact component={Home} />
+    <Route path="/login" exact  component={Login} />
+    <Route path="/signup" exact component={Signup} />
+    <Route path="/changepassword" exact component={ChangePassword} />
+    <Route path="/bucket" exact component={AllBuckets} />
     <Route component={NotFound} />
   </Switch>;
