@@ -7,7 +7,7 @@ render(){
   let bucket = this.props.bucket;
   let onSelectBucket = this.props.onSelectBucket;
   return(
-            <a href="#" className="list-group-item" onClick={()=>onSelectBucket(bucket.id)}> {bucket.name}</a>
+            <a className="list-group-item" onClick={()=>onSelectBucket(bucket.id)}> {bucket.name}</a>
         )
       }
 }
