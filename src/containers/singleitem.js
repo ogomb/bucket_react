@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import SweetAlert from 'react-bootstrap-sweetalert';
-import CustomToast from "../components/customalerts";
-import { toast } from 'react-toastify';
-import axios from 'axios';
 
 class SingleItem extends Component {
   constructor(props){
@@ -14,25 +11,7 @@ class SingleItem extends Component {
   }
 ondelete(id, name){
   let bucketid = this.props.bucketid;
-
-  axios({
-            url:  `http://127.0.0.1:5000/bucketlists/${bucketid}/item/${id}`,
-            method: "DELETE",
-            headers : {
-              'Authorization' :'Bearer '+window.localStorage.getItem("token"),
-              'content_type':"application/json"
-            }
-
-          })
-        .then((response) => {
-              console.log("Created  "+ response.data.name);
-
-          }
-        )
-        .catch(error => {
-          //alert(error)
-          console.log(error.response);
-        });
+  this.props.deleteItem(id, name, bucketid);
 
 }
 
@@ -58,32 +37,7 @@ hideAlert(){
 }
 handleSubmit(value, id){
   let bucketid = this.props.bucketid;
-  const load = {
-    'itemname' : value,
-    'done': 'True'
-  };
-
-  axios({
-            url:  `http://127.0.0.1:5000/bucketlists/${bucketid}/item/${id}`,
-            method: "PUT",
-            data: load,
-            headers : {
-              'Authorization' :'Bearer '+window.localStorage.getItem("token"),
-              'content_type':"application/json"
-            }
-
-          })
-        .then((response) => {
-              console.log("Created  "+ response.data.name);
-
-          }
-        )
-        .catch(error => {
-          //alert(error)
-          console.log(error.response);
-        });
-
-
+  this.props.editItem(value, id, bucketid);
   this.hideAlert();
 
 }
