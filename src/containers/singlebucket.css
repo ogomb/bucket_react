@@ -1,0 +1,5 @@
+.list-group .list-group-item:focus{
+  background: #50a78c;
+  cursor: pointer;
+  color: #fff;
+}
