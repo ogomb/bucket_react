@@ -18,18 +18,31 @@ describe('Login Page', () => {
       expect(wrapper.find('Login' ).length).to.equal(1);
     });
 
-    it('has username and password fields', ()=>{
+    it('shows username is entered', ()=>{
       let input_username = wrapper.find("#username")
       expect(input_username.length).to.equal(1);
-      const mockUp = jest.fn();
-      expect(input_username.simulate('change', {mockUp}, {target: {value:"awesome"}}));
+
+      const target  ={
+        value : "awesome",
+        id : "username"
+      }
+
+      input_username.simulate('change', {target});
+      expect(wrapper.state().username).to.equal(target.value);
     });
 
     it('shows username is entered', () => {
       let input_password = wrapper.find("#password");
-      const mockUp = jest.fn();
       expect(input_password.length).to.equal(1);
-      expect(input_password.simulate('change', {mockUp}, {target: {value: "awesome"}}));
+
+      const target  ={
+        value : "awesome",
+        id : "password"
+      }
+
+      input_password.simulate('change', {target});
+      expect(wrapper.state().password).to.equal(target.value);
+
     });
 
     it('shows password is entered', () => {
