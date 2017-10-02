@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { FormGroup,FormControl,ControlLabel } from "react-bootstrap";
+import { FormGroup,FormControl } from "react-bootstrap";
 import LoaderButton from "../components/loaderbutton";
 import CustomToast from "../components/customalerts";
-import { toast } from 'react-toastify';
-import axios from 'axios';
 import "./addbucket.css";
 
 class BucketAdd extends Component {
@@ -18,6 +16,7 @@ class BucketAdd extends Component {
     };
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
   }
 
@@ -36,35 +35,11 @@ onInputChange(term){
 }
 
 
-  handleSubmit = event => {
+  handleSubmit (event) {
     event.preventDefault();
     this.setState({isLoading : true});
-
-    const load = {
-      'name' : this.state.bucketname,
-    };
-
-    axios({
-              url:  'http://127.0.0.1:5000/bucketlists',
-              method: "POST",
-              data: load,
-              headers : {
-                'Authorization' :'Bearer '+window.localStorage.getItem('token'),
-                'content_type' :'application/json'
-              }
-
-            })
-          .then((response) => {
-                console.log(response);
-                toast.success("Created  "+ response.data.name);
-                this.setState({isLoading : false});
-            }
-          )
-          .catch(error => {
-            //alert(error)
-            toast.error(error.response.data.message);
-            this.setState({isLoading : false});
-          })
+    this.props.onaddItem(this.state.bucketname);
+    this.setState({isLoading : false});
   }
 
   render (){
@@ -78,6 +53,7 @@ onInputChange(term){
                 <FormGroup controlId="bucketname" bsSize="large">
                     <FormControl
                       type="text"
+                      placeholder="Bucket Description"
                       value={this.state.bucketname}
                       onChange={this.handleChange}
                     />
