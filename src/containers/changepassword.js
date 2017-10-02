@@ -4,7 +4,7 @@ import axios from 'axios';
 import "./login.css";
 import LoaderButton from "../components/loaderbutton";
 import CustomToast from "../components/customalerts";
-import {  toast } from 'react-toastify';
+
 
 export default class ChangePassword extends Component {
   constructor(props) {
@@ -55,7 +55,7 @@ export default class ChangePassword extends Component {
               }
             )
           .catch(error => {
-            console.log(error.response.data);
+            console.log(error.data);
             this.setState({isLoading : false});
           })
   }
