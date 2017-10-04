@@ -14,8 +14,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom --collectCoverageFrom=!src/*js --collectCoverageFrom=src/components/*js --collectCoverageFrom=src/containers/*js",
+    "eject": "react-scripts eject",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
   "devDependencies": {
     "chai": "^4.1.2",
