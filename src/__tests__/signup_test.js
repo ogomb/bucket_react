@@ -63,7 +63,7 @@ describe('Sign Page', () => {
         id : "email"
       }
 
-      signupbutton.simulate('submit', {target});
+      signupbutton.simulate('click', {target});
 
     });
 
