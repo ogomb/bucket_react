@@ -96,6 +96,7 @@ export default class Signup extends Component {
               />
             </FormGroup>
             <LoaderButton
+            id="sigupbutt"
               block
               bsSize="large"
               disabled={!this.validateForm()}
