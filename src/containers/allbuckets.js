@@ -39,7 +39,7 @@ onInputChange(term){
           if(response.data.message){
               toast.error("no buckets found");
               this.setState({searchedBuckets: null});
-             
+
           }
           else{
             this.setState({searchedBuckets: response.data})
@@ -47,7 +47,7 @@ onInputChange(term){
         })
 
         .catch(error => {
-          
+
           this.setState({searchedBuckets: null});
 
         });
@@ -68,7 +68,7 @@ onInputChange(term){
           )
           .catch((error) => {
             if (error.response) {
-             
+
             }
           });
       }
@@ -80,7 +80,7 @@ onInputChange(term){
   }
 
   handleSubmit(name){
-    this.setState({isLoading : false});
+    //this.setState({isLoading : false});
     const load = {
       'name' : name,
     };
@@ -129,7 +129,7 @@ onInputChange(term){
           })
           .catch(error => {
                       //alert(error)
-                
+
           });
   }
 
