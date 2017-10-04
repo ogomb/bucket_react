@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/ogomb/bucket_react/badge.svg?branch=)](https://coveralls.io/github/ogomb/bucket_react?branch=)
+
 
 # Bucket React
 
