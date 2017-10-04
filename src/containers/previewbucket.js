@@ -116,6 +116,7 @@ componentWillReceiveProps(nextProps){
     const editAlert = (id, name) => (
       <SweetAlert
           input
+          customClass="editClass"
           showCancel
   	      cancelBtnBsStyle="default"
           title= "Edit bucket name:"
@@ -154,7 +155,7 @@ componentWillReceiveProps(nextProps){
           )
           .catch(error => {
             //alert(error)
-            
+
           });
 
     this.hideAlert();
@@ -187,7 +188,7 @@ componentWillReceiveProps(nextProps){
     })
     .catch((error)=>{
       if (error.response) {
-       
+
       }
     });
 
@@ -209,14 +210,14 @@ componentWillReceiveProps(nextProps){
 
             })
           .then((response) => {
-               
+
                 this.getmyitems(bucketid);
 
             }
           )
           .catch(error => {
             //alert(error)
-           
+
           });
   }
 
@@ -231,14 +232,14 @@ componentWillReceiveProps(nextProps){
 
             })
           .then((response) => {
-               
+
                 this.getmyitems(bucketid);
 
             }
           )
           .catch(error => {
             //alert(error)
-           
+
           });
 
   }
@@ -255,8 +256,8 @@ componentWillReceiveProps(nextProps){
           <div className="panel-heading clearfix" >
             <h3 className="panel-title pull-left"> {this.props.bucket.name}</h3>
             <div className="btn-group pull-right">
-              <a  className="btn btn-default btn-sm" onClick={() => this.onshowEdit(id,name)}>Edit</a>{this.state.alert}
-              <a  className="btn btn-default btn-sm" onClick= {() => this.handleDelete(id, name)}>Delete</a>{this.state.alert}
+              <a id="edit" className="btn btn-default btn-sm" onClick={() => this.onshowEdit(id,name)}>Edit</a>{this.state.alert}
+              <a id="delete" className="btn btn-default btn-sm" onClick= {() => this.handleDelete(id, name)}>Delete</a>{this.state.alert}
             </div>
           </div>
             <div className="panel-body">
@@ -275,6 +276,7 @@ componentWillReceiveProps(nextProps){
                   </td>
                   <td>
                     <LoaderButton
+                      id="additembutton"
                       block
                       bsSize="large"
                       disabled={!this.validateForm()}
@@ -287,6 +289,7 @@ componentWillReceiveProps(nextProps){
                   </form>
                   <td style={{ "padding-bottom":'15px'}}>
                   <input className="form-control input-lg"
+                    id="searchitem"
                     type="text"
                     placeholder="Search .."
                     onChange = {event => this.onInputChange(event.target.value,id)}
