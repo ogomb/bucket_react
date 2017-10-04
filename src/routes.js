@@ -14,6 +14,6 @@ export default () =>
     <Route path="/login" exact  component={Login} />
     <Route path="/signup" exact component={Signup} />
     <Route path="/changepassword" exact component={ChangePassword} />
-    <Route path="/bucket" exact component={AllBuckets} />
+    <Route path="/:name/bucket" exact component={AllBuckets} />
     <Route component={NotFound} />
   </Switch>;
