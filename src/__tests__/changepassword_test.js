@@ -1,7 +1,8 @@
 import React from 'react';
 import {configure, Enzyme, mount} from 'enzyme';
 import {expect }from 'chai';
-
+import {spy, sinon} from 'sinon';
+import moxios from 'moxios';
 import TestUtils from 'react-addons-test-utils';
 
 
@@ -11,7 +12,12 @@ import ChangePassword from '../containers/changepassword';
 describe('ChangePassword component', () => {
     let wrapper;
     beforeEach( () => {
+      moxios.install();
       wrapper = mount(<ChangePassword />);
+    });
+    afterEach(function () {
+      moxios.uninstall();
+
     });
 
     it('has div with correct class' ,() => {
@@ -33,5 +39,15 @@ describe('ChangePassword component', () => {
     });
 
 
+    it('allows button to be clicked', () => {
+      let changepassbutt = wrapper.find("#changepassbutt");
+      const target  ={
+        value : "awesome",
+        id : "loginbutt"
+      }
+
+      changepassbutt.simulate('submit', {target});
+
+    });
 
   });
