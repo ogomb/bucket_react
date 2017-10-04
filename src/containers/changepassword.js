@@ -4,6 +4,7 @@ import axios from 'axios';
 import "./login.css";
 import LoaderButton from "../components/loaderbutton";
 import CustomToast from "../components/customalerts";
+import {  toast } from 'react-toastify';
 
 
 export default class ChangePassword extends Component {
@@ -22,8 +23,7 @@ export default class ChangePassword extends Component {
   }
 
   validateForm() {
-    return this.state.confirmpassword.length > 0 && this.state.changepassword.length > 0
-    this.state.confirmpassword !== this.state.changepassword;
+    return this.state.confirmpassword.length > 0 && this.state.changepassword.length > 0;
   }
 
   handleChange = event => {
@@ -51,11 +51,10 @@ export default class ChangePassword extends Component {
             })
             .then((response) => {
                   this.props.history.push("/login");
-                  
               }
             )
           .catch(error => {
-            
+            toast.error(error.response.data.message);
             this.setState({isLoading : false});
           })
   }
@@ -84,6 +83,7 @@ export default class ChangePassword extends Component {
             />
           </FormGroup>
           <LoaderButton
+            id="changepassbutt"
             block
             bsSize="large"
             disabled={!this.validateForm()}
