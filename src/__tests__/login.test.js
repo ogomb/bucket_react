@@ -63,7 +63,7 @@ describe('Login Page', () => {
         id : "loginbutt"
       }
 
-      loginbutt.simulate('submit', {target});
+      loginbutt.simulate('click', {target});
 
     });
 
