@@ -44,7 +44,7 @@ export default class Login extends Component {
           .then((response) => {
                 //toast(response.data.message);
                 localStorage.setItem("token",response.data.token);
-                this.props.history.push("/bucket");
+                this.props.history.push(this.state.username+"/bucket");
 
             }
           )
@@ -78,6 +78,7 @@ export default class Login extends Component {
             />
           </FormGroup>
           <LoaderButton
+            id="loginbutt"
             block
             bsSize="large"
             disabled={!this.validateForm()}
