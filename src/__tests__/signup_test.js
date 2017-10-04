@@ -1,13 +1,21 @@
 import React from 'react';
 import {configure, Enzyme, mount} from 'enzyme';
 import {expect }from 'chai';
+import {spy, sinon} from 'sinon';
+import moxios from 'moxios';
 
 import Signup from '../containers/signup';
 
 describe('Sign Page', () => {
     let wrapper;
     beforeEach( () => {
+      moxios.install();
       wrapper = mount(<Signup />);
+    });
+
+    afterEach(function () {
+      moxios.uninstall();
+
     });
 
     it('has div with correct class' ,() => {
@@ -47,5 +55,17 @@ describe('Sign Page', () => {
       input_email.simulate('change', {target});
       expect(wrapper.state().email).to.equal(target.value);
     });
+
+    it('allows button to be clicked', () => {
+      let signupbutton = wrapper.find("#sigupbutt");
+      const target  ={
+        value : "awesome",
+        id : "email"
+      }
+
+      signupbutton.simulate('submit', {target});
+
+    });
+
 
   });
