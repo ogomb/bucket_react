@@ -20,13 +20,14 @@ clone this repo, install dependencies, then start the app process with the follo
 > npm start
 ```
 # Below are some screenshots.
- # home page
+ Home page
 <img width="1272" alt="screen shot 2017-10-04 at 16 00 30" src="https://user-images.githubusercontent.com/12627015/31177476-d419f8cc-a91e-11e7-970f-e09832d8013a.png">
 
- # signup page
+ Signup page
  <img width="1272" alt="screen shot 2017-10-04 at 16 07 51" src="https://user-images.githubusercontent.com/12627015/31177480-d8ef6580-a91e-11e7-8c13-5babbd239c46.png">
-  # login page
+ 
+ Login page
 <img width="1269" alt="screen shot 2017-10-04 at 16 08 08" src="https://user-images.githubusercontent.com/12627015/31177484-db413638-a91e-11e7-8c70-229f11eb1cb6.png">
 
- # buckets page
+ Buckets page
 <img width="1272" alt="screen shot 2017-10-04 at 16 08 45" src="https://user-images.githubusercontent.com/12627015/31177487-dcf29ed6-a91e-11e7-88d4-1e329e2ca4e7.png">
