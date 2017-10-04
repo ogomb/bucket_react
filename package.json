@@ -4,20 +4,17 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
-    "coveralls": "^3.0.0",
     "react-bootstrap": "^0.31.3",
     "react-bootstrap-sweetalert": "^4.0.0",
     "react-dom": "^15.5.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.13",
-    "react-toastify": "^2.0.0",
-    "moxios": "^0.4.0",
-    "sinon": "^4.0.1",
+    "react-toastify": "^2.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom  --collectCoverageFrom=!src/*js --collectCoverageFrom=src/components/*js --collectCoverageFrom=src/containers/*js",
+    "test": "react-scripts test --env=jsdom --collectCoverageFrom=!src/*js --collectCoverageFrom=src/components/*js --collectCoverageFrom=src/containers/*js",
     "eject": "react-scripts eject",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
@@ -26,10 +23,9 @@
     "enzyme": "^2.9.1",
     "eslint": "^4.7.2",
     "jest": "^21.2.1",
-
+    "moxios": "^0.4.0",
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.6.2",
-
+    "sinon": "^4.0.1"
   }
 }
-
