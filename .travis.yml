@@ -5,6 +5,7 @@ cache:
   directories:
   - node_modules
   - src/containers
+  - src/components
 script:
   - npm test
 after_success:
