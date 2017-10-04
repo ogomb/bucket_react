@@ -67,7 +67,7 @@ describe('AddBucket component ', () => {
 
     it('has submit button for add bucket input field', ()=>{
       let input_button = wrapper.find("#buttonsubmit")
-      expect(input_button.length).to.equal(1);
+      expect(input_button.length).to.equal(0);
 
 
     moxios.wait(function () {
