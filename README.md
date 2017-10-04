@@ -1,7 +1,7 @@
 
 
 # Bucket React
-# WHAT DOES THIS APP DO?
+# What does this app do?
 This app is called bucketlist it is a list of stuff you ought to do before a certain time. 
 
 This bucket list application was built on top Reactjs to consume a public REST api.
