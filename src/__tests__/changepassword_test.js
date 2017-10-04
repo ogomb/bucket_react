@@ -46,7 +46,7 @@ describe('ChangePassword component', () => {
         id : "loginbutt"
       }
 
-      changepassbutt.simulate('submit', {target});
+      changepassbutt.simulate('click', {target});
 
     });
 
