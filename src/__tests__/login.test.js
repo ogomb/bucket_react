@@ -1,6 +1,8 @@
 import React from 'react';
 import {configure, Enzyme, mount} from 'enzyme';
 import {expect }from 'chai';
+import {spy, sinon} from 'sinon';
+import moxios from 'moxios';
 
 import TestUtils from 'react-addons-test-utils';
 
@@ -11,7 +13,12 @@ import Login from '../containers/login';
 describe('Login Page', () => {
     let wrapper;
     beforeEach( () => {
+      moxios.install();
       wrapper = mount(<Login />);
+    });
+    afterEach(function () {
+      moxios.uninstall();
+
     });
 
     it('has div with correct class' ,() => {
@@ -46,6 +53,17 @@ describe('Login Page', () => {
     });
 
     it('shows password is entered', () => {
+
+    });
+
+    it('allows button to be clicked', () => {
+      let loginbutt = wrapper.find("#loginbutt");
+      const target  ={
+        value : "awesome",
+        id : "loginbutt"
+      }
+
+      loginbutt.simulate('submit', {target});
 
     });
 
