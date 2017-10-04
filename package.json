@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
-    "coveralls": "^3.0.0",
     "react-bootstrap": "^0.31.3",
     "react-bootstrap-sweetalert": "^4.0.0",
     "react-dom": "^15.5.0",
@@ -19,7 +18,7 @@
     "eject": "react-scripts eject",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
-   "devDependencies": {
+  "devDependencies": {
     "chai": "^4.1.2",
     "enzyme": "^2.9.1",
     "eslint": "^4.7.2",
