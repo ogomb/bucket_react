@@ -18,6 +18,7 @@ ondelete(id, name){
 onshow(id, name){
   const editAlert = (id, name) => (
     <SweetAlert
+        customClass="editClass"
         input
         showCancel
 	      cancelBtnBsStyle="default"
@@ -57,7 +58,7 @@ render(){
             </a>{this.state.alert}
           </td>
           <td>
-            <a onClick={() => this.ondelete(item.id,item.name)} className='btn btn-default'>
+            <a onClick={() => this.ondelete(item.id,item.name)} className='btn btn-default' id="deleteitem">
               <i className='glyphicon glyphicon-trash' aria-hidden='true'></i>
             </a>{this.state.alert}
 
