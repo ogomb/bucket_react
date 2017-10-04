@@ -1,6 +1,10 @@
 
 
 # Bucket React
+# WHAT DOES THIS APP DO?
+This app is called bucketlist it is a list of stuff you ought to do before a certain time. 
+
+This bucket list application was built on top Reactjs to consume a public REST api.
 
 ### Getting Started
 
@@ -15,4 +19,8 @@ clone this repo, install dependencies, then start the app process with the follo
 > npm install
 > npm start
 ```
+# Below are some screenshots.
+
+
+![alt text](/Users/lewismbogo/Desktop/)
 
